@@ -3,6 +3,10 @@ import Grid from "@mui/material/Grid";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -19,9 +23,9 @@ function DisplayResult(props: any) {
   const [giantProducts, setGiantProducts] = useState([]);
   const [coldstorageProducts, setColdstorageProducts] = useState([]);
 
-  const [fairpricePage, setFairpricePage] = useState(0);
-  const [giantPage, setGiantPage] = useState(0);
-  const [coldstoragePage, setColdstoragePage] = useState(0);
+  let [fairpricePage, setFairpricePage] = useState(0);
+  let [giantPage, setGiantPage] = useState(0);
+  let [coldstoragePage, setColdstoragePage] = useState(0);
 
   const [fairpriceProductsChecked, setFairpriceProductsChecked] =
     useState(false);
@@ -39,30 +43,39 @@ function DisplayResult(props: any) {
 
   useEffect(() => {
     if (props.searchKeyword) {
-      getFairpriceProducts(props.searchKeyword, fairpriceProductsChecked);
+      getFairpriceProducts(
+        props.searchKeyword,
+        fairpricePage,
+        fairpriceProductsChecked
+      );
     }
-  }, [props.searchKeyword, fairpriceProductsChecked]);
+  }, [props.searchKeyword, fairpricePage, fairpriceProductsChecked]);
 
   useEffect(() => {
     if (props.searchKeyword) {
-      getGiantProducts(props.searchKeyword, giantProductsChecked);
+      getGiantProducts(props.searchKeyword, giantPage, giantProductsChecked);
     }
-  }, [props.searchKeyword, giantProductsChecked]);
+  }, [props.searchKeyword, giantPage, giantProductsChecked]);
 
   useEffect(() => {
     if (props.searchKeyword) {
-      getColdstorageProducts(props.searchKeyword, coldstorageProductsChecked);
+      getColdstorageProducts(
+        props.searchKeyword,
+        coldstoragePage,
+        coldstorageProductsChecked
+      );
     }
-  }, [props.searchKeyword, coldstorageProductsChecked]);
+  }, [props.searchKeyword, coldstoragePage, coldstorageProductsChecked]);
 
   const getFairpriceProducts = async (
     searchKeyword: string,
+    fairpricePage?: number,
     fairpriceProductsChecked?: boolean
   ) => {
     let params = {
       search_keyword: searchKeyword,
     };
-    if (fairpricePage > 0) {
+    if (fairpricePage && fairpricePage > 0) {
       params = Object.assign(params, { page: fairpricePage });
     }
     if (!fairpriceProductsChecked) {
@@ -82,12 +95,13 @@ function DisplayResult(props: any) {
 
   const getGiantProducts = async (
     searchKeyword: string,
+    giantPage?: number,
     giantProductsChecked?: boolean
   ) => {
     let params = {
       search_keyword: searchKeyword,
     };
-    if (giantPage > 0) {
+    if (giantPage && giantPage > 0) {
       params = Object.assign(params, { page: giantPage });
     }
     if (!giantProductsChecked) {
@@ -107,12 +121,13 @@ function DisplayResult(props: any) {
 
   const getColdstorageProducts = async (
     searchKeyword: string,
+    coldstoragePage?: number,
     coldstorageProductsChecked?: boolean
   ) => {
     let params = {
       search_keyword: searchKeyword,
     };
-    if (coldstoragePage > 0) {
+    if (coldstoragePage && coldstoragePage > 0) {
       params = Object.assign(params, { page: coldstoragePage });
     }
     if (!coldstorageProductsChecked) {
@@ -256,6 +271,54 @@ function DisplayResult(props: any) {
     setColdstorageProductsChecked(e.target.checked);
   };
 
+  const handleRemoveButtonClick = (type: string) => {
+    if (type) {
+      switch (type) {
+        case "fairprice":
+          if (fairpricePage > 0) {
+            fairpricePage -= 1;
+            setFairpricePage(fairpricePage);
+          }
+          break;
+        case "giant":
+          if (giantPage > 0) {
+            giantPage -= 1;
+            setGiantPage(giantPage);
+          }
+          break;
+        case "coldstorage":
+          if (coldstoragePage > 0) {
+            coldstoragePage -= 1;
+            setColdstoragePage(coldstoragePage);
+          }
+          break;
+        default:
+          break;
+      }
+    }
+  };
+
+  const handleAddButtonClick = (type: string) => {
+    if (type) {
+      switch (type) {
+        case "fairprice":
+          fairpricePage += 1;
+          setFairpricePage(fairpricePage);
+          break;
+        case "giant":
+          giantPage += 1;
+          setGiantPage(giantPage);
+          break;
+        case "coldstorage":
+          coldstoragePage += 1;
+          setColdstoragePage(coldstoragePage);
+          break;
+        default:
+          break;
+      }
+    }
+  };
+
   const renderGridColumns = () => {
     let gridColumns = null;
 
@@ -281,6 +344,34 @@ function DisplayResult(props: any) {
                   }
                 />
               </FormGroup>
+
+              <div className="d-flex flex-row align-items-center">
+                <Typography
+                  className="my-1"
+                  gutterBottom
+                  variant="h6"
+                  component="div"
+                >
+                  Page: {fairpricePage}
+                </Typography>
+                <Stack className="ml-2" direction="row">
+                  <IconButton
+                    aria-label="remove"
+                    color="primary"
+                    onClick={() => handleRemoveButtonClick("fairprice")}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                  <IconButton
+                    aria-label="add"
+                    color="primary"
+                    onClick={() => handleAddButtonClick("fairprice")}
+                  >
+                    <AddIcon />
+                  </IconButton>
+                </Stack>
+              </div>
+
               {renderFairpriceProducts(fairpriceProducts)}
             </Grid>
             <Grid item sm={4} md={4} className="p-3">
@@ -302,6 +393,34 @@ function DisplayResult(props: any) {
                   }
                 />
               </FormGroup>
+
+              <div className="d-flex flex-row align-items-center">
+                <Typography
+                  className="my-1"
+                  gutterBottom
+                  variant="h6"
+                  component="div"
+                >
+                  Page: {giantPage}
+                </Typography>
+                <Stack className="ml-2" direction="row">
+                  <IconButton
+                    aria-label="remove"
+                    color="success"
+                    onClick={() => handleRemoveButtonClick("giant")}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                  <IconButton
+                    aria-label="add"
+                    color="success"
+                    onClick={() => handleAddButtonClick("giant")}
+                  >
+                    <AddIcon />
+                  </IconButton>
+                </Stack>
+              </div>
+
               {renderGiantProducts(giantProducts)}
             </Grid>
             <Grid item sm={4} md={4} className="p-3">
@@ -323,6 +442,34 @@ function DisplayResult(props: any) {
                   }
                 />
               </FormGroup>
+
+              <div className="d-flex flex-row align-items-center">
+                <Typography
+                  className="my-1"
+                  gutterBottom
+                  variant="h6"
+                  component="div"
+                >
+                  Page: {coldstoragePage}
+                </Typography>
+                <Stack className="ml-2" direction="row">
+                  <IconButton
+                    aria-label="remove"
+                    color="error"
+                    onClick={() => handleRemoveButtonClick("coldstorage")}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                  <IconButton
+                    aria-label="add"
+                    color="error"
+                    onClick={() => handleAddButtonClick("coldstorage")}
+                  >
+                    <AddIcon />
+                  </IconButton>
+                </Stack>
+              </div>
+
               {renderColdstorageProducts(coldstorageProducts)}
             </Grid>
           </Grid>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -18,7 +18,7 @@ function App() {
     setSearchKeyword(e.target.value);
   };
 
-  const handleButtonChange = () => {
+  const handleClearAllButtonClick = () => {
     setSearchKeyword("");
   };
 
@@ -32,7 +32,7 @@ function App() {
             variant="outlined"
             color="error"
             className="w-100 my-3"
-            onClick={() => handleButtonChange()}
+            onClick={() => handleClearAllButtonClick()}
           >
             Clear All
           </Button>

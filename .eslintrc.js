@@ -19,7 +19,9 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint", "prettier"],
-  rules: {},
+  rules: {
+    "prefer-const": "off",
+  },
   settings: {
     react: {
       version: "detect",
