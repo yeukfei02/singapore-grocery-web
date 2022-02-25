@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -8,6 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
+import Carousel from "react-material-ui-carousel";
 import axios from "axios";
 import { getRootUrl } from "../../helpers/helpers";
 
@@ -129,6 +130,26 @@ function DisplayResult(props: any) {
     }
   };
 
+  const renderProductImages = (images: string[]) => {
+    let productImages: any[] = [];
+
+    if (images) {
+      productImages = images.map((image: string, i: number) => {
+        return (
+          <CardMedia
+            key={i}
+            component="img"
+            height="180"
+            image={image}
+            alt=""
+          />
+        );
+      });
+    }
+
+    return productImages;
+  };
+
   const renderFairpriceProducts = (fairpriceProducts: any[]) => {
     let fairpriceProductsDiv: any[] = [];
 
@@ -137,12 +158,7 @@ function DisplayResult(props: any) {
         (product: any, i: number) => {
           return (
             <Card key={i} className="my-4 p-4">
-              <CardMedia
-                component="img"
-                height="150"
-                image={product.images[0]}
-                alt=""
-              />
+              <Carousel>{renderProductImages(product.images)}</Carousel>
               <CardContent>
                 <Typography gutterBottom variant="h6" component="div">
                   {product.name}
@@ -173,12 +189,7 @@ function DisplayResult(props: any) {
       giantProductsDiv = giantProducts.map((product: any, i: number) => {
         return (
           <Card key={i} className="my-4 p-4">
-            <CardMedia
-              component="img"
-              height="150"
-              image={product.images[0]}
-              alt=""
-            />
+            <Carousel>{renderProductImages(product.images)}</Carousel>
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">
                 {product.name}
@@ -209,12 +220,7 @@ function DisplayResult(props: any) {
         (product: any, i: number) => {
           return (
             <Card key={i} className="my-4 p-4">
-              <CardMedia
-                component="img"
-                height="150"
-                image={product.images[0]}
-                alt=""
-              />
+              <Carousel>{renderProductImages(product.images)}</Carousel>
               <CardContent>
                 <Typography gutterBottom variant="h6" component="div">
                   {product.name}

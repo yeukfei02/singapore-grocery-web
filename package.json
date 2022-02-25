@@ -9,7 +9,8 @@
     "@mui/material": "^5.4.3",
     "axios": "^0.26.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-material-ui-carousel": "^3.2.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
