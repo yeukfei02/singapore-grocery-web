@@ -13,6 +13,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 import Carousel from "react-material-ui-carousel";
+import Fab from "@mui/material/Fab";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import axios from "axios";
 import { getRootUrl } from "../../helpers/helpers";
 
@@ -319,6 +321,10 @@ function DisplayResult(props: any) {
     }
   };
 
+  const handleFabButtonClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   const renderGridColumns = () => {
     let gridColumns = null;
 
@@ -473,6 +479,22 @@ function DisplayResult(props: any) {
               {renderColdstorageProducts(coldstorageProducts)}
             </Grid>
           </Grid>
+
+          <Fab
+            color="error"
+            aria-label="add"
+            style={{
+              margin: 0,
+              top: "auto",
+              right: 30,
+              bottom: 30,
+              left: "auto",
+              position: "fixed",
+            }}
+            onClick={() => handleFabButtonClick()}
+          >
+            <KeyboardArrowUpIcon />
+          </Fab>
         </div>
       );
     }
