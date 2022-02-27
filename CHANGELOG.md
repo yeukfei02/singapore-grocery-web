@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.2...v0.1.3) (2022-02-27)
+
+
+### Features
+
+* 🎸 add fab button and scroll to top ([2e303a9](https://github.com/yeukfei02/singapore-grocery-web/commit/2e303a973aef2dfe483b9baca1fa8744209a6836))
+
 ### [0.1.2](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.1...v0.1.2) (2022-02-25)
 
 ### 0.1.1 (2022-02-25)
