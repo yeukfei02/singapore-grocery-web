@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.3...v0.1.4) (2022-03-02)
+
+
+### Features
+
+* 🎸 add offers and increase image size ([bba9321](https://github.com/yeukfei02/singapore-grocery-web/commit/bba932191f4f6c2faee5d338cfbc7b066bff186a))
+
 ### [0.1.3](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.2...v0.1.3) (2022-02-27)
 
 
