@@ -156,7 +156,7 @@ function DisplayResult(props: any) {
           <CardMedia
             key={i}
             component="img"
-            height="180"
+            height="350"
             image={image}
             alt=""
           />
@@ -165,6 +165,28 @@ function DisplayResult(props: any) {
     }
 
     return productImages;
+  };
+
+  const renderOffers = (offers: string[]) => {
+    let offersDiv: any[] = [];
+
+    if (offers) {
+      offersDiv = offers.map((offer: string, i: number) => {
+        return (
+          <Typography
+            key={i}
+            gutterBottom
+            variant="h4"
+            component="div"
+            color="red"
+          >
+            <b>{offer}</b>
+          </Typography>
+        );
+      });
+    }
+
+    return offersDiv;
   };
 
   const renderFairpriceProducts = (fairpriceProducts: any[]) => {
@@ -181,6 +203,7 @@ function DisplayResult(props: any) {
                   {product.name}
                 </Typography>
                 <Typography variant="h4">${product.price}</Typography>
+                <div className="my-3">{renderOffers(product.offers)}</div>
                 <Alert
                   icon={false}
                   severity="info"
@@ -212,6 +235,7 @@ function DisplayResult(props: any) {
                 {product.name}
               </Typography>
               <Typography variant="h4">${product.price}</Typography>
+              <div className="my-3">{renderOffers(product.offers)}</div>
               <Alert
                 icon={false}
                 severity="success"
@@ -243,6 +267,7 @@ function DisplayResult(props: any) {
                   {product.name}
                 </Typography>
                 <Typography variant="h4">${product.price}</Typography>
+                <div className="my-3">{renderOffers(product.offers)}</div>
                 <Alert
                   icon={false}
                   severity="error"
