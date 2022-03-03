@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.4...v0.1.5) (2022-03-03)
+
+
+### Features
+
+* 🎸 add delayDebounceFn ([ea63786](https://github.com/yeukfei02/singapore-grocery-web/commit/ea637868fdcb8bb6f46161941e7635d666123591))
+
 ### [0.1.4](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.3...v0.1.4) (2022-03-02)
 
 
