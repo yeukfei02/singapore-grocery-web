@@ -37,35 +37,51 @@ function DisplayResult(props: any) {
 
   useEffect(() => {
     if (props.searchKeyword) {
-      getFairpriceProducts(props.searchKeyword);
-      getGiantProducts(props.searchKeyword);
-      getColdstorageProducts(props.searchKeyword);
+      const delayDebounceFn = setTimeout(() => {
+        getFairpriceProducts(props.searchKeyword);
+        getGiantProducts(props.searchKeyword);
+        getColdstorageProducts(props.searchKeyword);
+      }, 1500);
+
+      return () => clearTimeout(delayDebounceFn);
     }
   }, [props.searchKeyword]);
 
   useEffect(() => {
     if (props.searchKeyword) {
-      getFairpriceProducts(
-        props.searchKeyword,
-        fairpricePage,
-        fairpriceProductsChecked
-      );
+      const delayDebounceFn = setTimeout(() => {
+        getFairpriceProducts(
+          props.searchKeyword,
+          fairpricePage,
+          fairpriceProductsChecked
+        );
+      }, 1500);
+
+      return () => clearTimeout(delayDebounceFn);
     }
   }, [props.searchKeyword, fairpricePage, fairpriceProductsChecked]);
 
   useEffect(() => {
     if (props.searchKeyword) {
-      getGiantProducts(props.searchKeyword, giantPage, giantProductsChecked);
+      const delayDebounceFn = setTimeout(() => {
+        getGiantProducts(props.searchKeyword, giantPage, giantProductsChecked);
+      }, 1500);
+
+      return () => clearTimeout(delayDebounceFn);
     }
   }, [props.searchKeyword, giantPage, giantProductsChecked]);
 
   useEffect(() => {
     if (props.searchKeyword) {
-      getColdstorageProducts(
-        props.searchKeyword,
-        coldstoragePage,
-        coldstorageProductsChecked
-      );
+      const delayDebounceFn = setTimeout(() => {
+        getColdstorageProducts(
+          props.searchKeyword,
+          coldstoragePage,
+          coldstorageProductsChecked
+        );
+      }, 1500);
+
+      return () => clearTimeout(delayDebounceFn);
     }
   }, [props.searchKeyword, coldstoragePage, coldstorageProductsChecked]);
 
