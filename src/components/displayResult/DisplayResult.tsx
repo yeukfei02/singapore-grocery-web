@@ -38,18 +38,6 @@ function DisplayResult(props: any) {
   useEffect(() => {
     if (props.searchKeyword) {
       const delayDebounceFn = setTimeout(() => {
-        getFairpriceProducts(props.searchKeyword);
-        getGiantProducts(props.searchKeyword);
-        getColdstorageProducts(props.searchKeyword);
-      }, 1500);
-
-      return () => clearTimeout(delayDebounceFn);
-    }
-  }, [props.searchKeyword]);
-
-  useEffect(() => {
-    if (props.searchKeyword) {
-      const delayDebounceFn = setTimeout(() => {
         getFairpriceProducts(
           props.searchKeyword,
           fairpricePage,
