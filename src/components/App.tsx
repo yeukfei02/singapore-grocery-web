@@ -68,6 +68,14 @@ function App() {
     setSuggestions([]);
   };
 
+  const handleSearchOnShengsiongClick = () => {
+    window.open(`https://shengsiong.com.sg/search/${searchKeyword}`);
+  };
+
+  const handleSearchOnRedmartClick = () => {
+    window.open(`https://www.lazada.sg/catalog/?q=${searchKeyword}`);
+  };
+
   const renderDisplayResult = (searchKeyword: string) => {
     let displayResultDiv = null;
 
@@ -82,6 +90,34 @@ function App() {
           >
             Clear All
           </Button>
+
+          <div className="d-flex flex-row justify-content-around">
+            <Typography
+              className="my-2"
+              gutterBottom
+              variant="h6"
+              component="div"
+              color="red"
+              onClick={() => handleSearchOnShengsiongClick()}
+            >
+              <span className="mouse-over text-underline">
+                <b>Search {searchKeyword} on Shengsiong</b>
+              </span>
+            </Typography>
+
+            <Typography
+              className="my-2"
+              gutterBottom
+              variant="h6"
+              component="div"
+              color="red"
+              onClick={() => handleSearchOnRedmartClick()}
+            >
+              <span className="mouse-over text-underline">
+                <b>Search {searchKeyword} on Redmart</b>
+              </span>
+            </Typography>
+          </div>
 
           <DisplayResult searchKeyword={searchKeyword} />
         </div>
