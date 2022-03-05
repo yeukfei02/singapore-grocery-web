@@ -193,6 +193,24 @@ function DisplayResult(props: any) {
     return offersDiv;
   };
 
+  const handleProductNameClick = (slug: string, type: string) => {
+    if (type) {
+      switch (type) {
+        case "fairprice":
+          window.open(`https://www.fairprice.com.sg/product/${slug}`);
+          break;
+        case "giant":
+          window.open(`https://giant.sg/${slug}`);
+          break;
+        case "coldstorage":
+          window.open(`https://coldstorage.com.sg/${slug}`);
+          break;
+        default:
+          break;
+      }
+    }
+  };
+
   const renderFairpriceProducts = (fairpriceProducts: any[]) => {
     let fairpriceProductsDiv: any[] = [];
 
@@ -201,10 +219,28 @@ function DisplayResult(props: any) {
         (product: any, i: number) => {
           return (
             <Card key={i} className="my-4 p-4">
-              <Carousel>{renderProductImages(product.images)}</Carousel>
+              <Carousel>
+                <div
+                  className="mouse-over"
+                  onClick={() =>
+                    handleProductNameClick(product.slug, "fairprice")
+                  }
+                >
+                  {renderProductImages(product.images)}
+                </div>
+              </Carousel>
               <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                  {product.name}
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="div"
+                  onClick={() =>
+                    handleProductNameClick(product.slug, "fairprice")
+                  }
+                >
+                  <div className="mouse-over text-underline">
+                    {product.name}
+                  </div>
                 </Typography>
                 <Typography variant="h4">${product.price}</Typography>
                 <div className="my-3">{renderOffers(product.offers)}</div>
@@ -233,10 +269,22 @@ function DisplayResult(props: any) {
       giantProductsDiv = giantProducts.map((product: any, i: number) => {
         return (
           <Card key={i} className="my-4 p-4">
-            <Carousel>{renderProductImages(product.images)}</Carousel>
+            <Carousel>
+              <div
+                className="mouse-over"
+                onClick={() => handleProductNameClick(product.slug, "giant")}
+              >
+                {renderProductImages(product.images)}
+              </div>
+            </Carousel>
             <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
-                {product.name}
+              <Typography
+                gutterBottom
+                variant="h6"
+                component="div"
+                onClick={() => handleProductNameClick(product.slug, "giant")}
+              >
+                <div className="mouse-over text-underline">{product.name}</div>
               </Typography>
               <Typography variant="h4">${product.price}</Typography>
               <div className="my-3">{renderOffers(product.offers)}</div>
@@ -265,10 +313,28 @@ function DisplayResult(props: any) {
         (product: any, i: number) => {
           return (
             <Card key={i} className="my-4 p-4">
-              <Carousel>{renderProductImages(product.images)}</Carousel>
+              <Carousel>
+                <div
+                  className="mouse-over"
+                  onClick={() =>
+                    handleProductNameClick(product.slug, "coldstorage")
+                  }
+                >
+                  {renderProductImages(product.images)}
+                </div>
+              </Carousel>
               <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                  {product.name}
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="div"
+                  onClick={() =>
+                    handleProductNameClick(product.slug, "coldstorage")
+                  }
+                >
+                  <div className="mouse-over text-underline">
+                    {product.name}
+                  </div>
                 </Typography>
                 <Typography variant="h4">${product.price}</Typography>
                 <div className="my-3">{renderOffers(product.offers)}</div>

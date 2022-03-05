@@ -3,3 +3,11 @@
 body {
     background-color: aliceblue;
 }
+
+.mouse-over:hover {
+    cursor: pointer;
+}
+
+.text-underline:hover {
+    text-decoration: underline;
+}
