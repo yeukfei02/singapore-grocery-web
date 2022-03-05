@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import DisplayResult from "./displayResult/DisplayResult";
+import axios from "axios";
+import { getRootUrl } from "../helpers/helpers";
+
+const rootUrl = getRootUrl();
 
 const theme = createTheme({
   typography: {
@@ -13,13 +18,54 @@ const theme = createTheme({
 
 function App() {
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+
+  useEffect(() => {
+    if (searchKeyword) {
+      const delayDebounceFn = setTimeout(() => {
+        getSuggestionsRequest(searchKeyword);
+      }, 1500);
+
+      return () => clearTimeout(delayDebounceFn);
+    }
+  }, [searchKeyword]);
+
+  const getSuggestionsRequest = async (searchKeyword: string) => {
+    const response = await axios.get(`${rootUrl}/get-suggestions`, {
+      params: {
+        search_keyword: searchKeyword,
+      },
+    });
+    if (response) {
+      const responseData = response.data;
+      if (responseData) {
+        setSuggestions(responseData.suggestions);
+      }
+    }
+  };
 
   const handleSearchKeywordChange = (e: any) => {
     setSearchKeyword(e.target.value);
   };
 
+  const handleSelectedOptionsChange = (
+    event: any,
+    value: string | null,
+    reason: string
+  ) => {
+    if (value) {
+      setSearchKeyword(value);
+    }
+
+    if (reason === "clear") {
+      setSearchKeyword("");
+      setSuggestions([]);
+    }
+  };
+
   const handleClearAllButtonClick = () => {
     setSearchKeyword("");
+    setSuggestions([]);
   };
 
   const renderDisplayResult = (searchKeyword: string) => {
@@ -52,13 +98,20 @@ function App() {
           Singapore Grocery Web
         </Typography>
 
-        <TextField
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
           className="w-100 mt-3"
-          id="outlined-basic"
-          label="Search Keyword"
-          variant="outlined"
+          options={suggestions}
           value={searchKeyword}
-          onChange={(e) => handleSearchKeywordChange(e)}
+          inputValue={searchKeyword}
+          onChange={(event, value, reason) =>
+            handleSelectedOptionsChange(event, value, reason)
+          }
+          onInputChange={(e) => handleSearchKeywordChange(e)}
+          renderInput={(params) => (
+            <TextField {...params} label="Search Keyword" />
+          )}
         />
 
         {renderDisplayResult(searchKeyword)}
