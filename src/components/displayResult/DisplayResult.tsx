@@ -219,16 +219,14 @@ function DisplayResult(props: any) {
         (product: any, i: number) => {
           return (
             <Card key={i} className="my-4 p-4">
-              <Carousel>
-                <div
-                  className="mouse-over"
-                  onClick={() =>
-                    handleProductNameClick(product.slug, "fairprice")
-                  }
-                >
-                  {renderProductImages(product.images)}
-                </div>
-              </Carousel>
+              <div
+                className="mouse-over"
+                onClick={() =>
+                  handleProductNameClick(product.slug, "fairprice")
+                }
+              >
+                <Carousel>{renderProductImages(product.images)}</Carousel>
+              </div>
               <CardContent>
                 <Typography
                   gutterBottom
@@ -269,14 +267,12 @@ function DisplayResult(props: any) {
       giantProductsDiv = giantProducts.map((product: any, i: number) => {
         return (
           <Card key={i} className="my-4 p-4">
-            <Carousel>
-              <div
-                className="mouse-over"
-                onClick={() => handleProductNameClick(product.slug, "giant")}
-              >
-                {renderProductImages(product.images)}
-              </div>
-            </Carousel>
+            <div
+              className="mouse-over"
+              onClick={() => handleProductNameClick(product.slug, "giant")}
+            >
+              <Carousel>{renderProductImages(product.images)}</Carousel>
+            </div>
             <CardContent>
               <Typography
                 gutterBottom
@@ -315,16 +311,14 @@ function DisplayResult(props: any) {
         (product: any, i: number) => {
           return (
             <Card key={i} className="my-4 p-4">
-              <Carousel>
-                <div
-                  className="mouse-over"
-                  onClick={() =>
-                    handleProductNameClick(product.slug, "coldstorage")
-                  }
-                >
-                  {renderProductImages(product.images)}
-                </div>
-              </Carousel>
+              <div
+                className="mouse-over"
+                onClick={() =>
+                  handleProductNameClick(product.slug, "coldstorage")
+                }
+              >
+                <Carousel>{renderProductImages(product.images)}</Carousel>
+              </div>
               <CardContent>
                 <Typography
                   gutterBottom
