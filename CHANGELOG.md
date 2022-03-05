@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.6...v0.1.7) (2022-03-05)
+
+
+### Features
+
+* 🎸 add suggestions and autocomplete ([a9a8d29](https://github.com/yeukfei02/singapore-grocery-web/commit/a9a8d292edd05d4df4796797a22dd74aebe01ad0))
+* 🎸 handle clear button click ([38e695d](https://github.com/yeukfei02/singapore-grocery-web/commit/38e695d8f03ffedb52a537a671384b83452a90e5))
+
 ### [0.1.6](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.5...v0.1.6) (2022-03-05)
 
 
