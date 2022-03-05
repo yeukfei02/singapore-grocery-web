@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.5...v0.1.6) (2022-03-05)
+
+
+### Features
+
+* 🎸 add window open when click title and image ([463524e](https://github.com/yeukfei02/singapore-grocery-web/commit/463524e2ef6593c17fde07a2f6343073aa1710cc))
+
+
+### Bug Fixes
+
+* 🐛 remove duplicate useEffect ([0cdc691](https://github.com/yeukfei02/singapore-grocery-web/commit/0cdc6916784cd2db7a252f022a98689c038cbe1e))
+
 ### [0.1.5](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.4...v0.1.5) (2022-03-03)
 
 
