@@ -422,20 +422,6 @@ function DisplayResult(props: any) {
     window.scrollTo(0, 0);
   };
 
-  const handleSearchOnFairPriceClick = () => {
-    window.open(
-      `https://www.fairprice.com.sg/search?query=${props.searchKeyword}`
-    );
-  };
-
-  const handleSearchOnGiantClick = () => {
-    window.open(`https://giant.sg/search?q=${props.searchKeyword}`);
-  };
-
-  const handleSearchOnColdstorageClick = () => {
-    window.open(`https://coldstorage.com.sg/search?q=${props.searchKeyword}`);
-  };
-
   const renderGridColumns = () => {
     let gridColumns = null;
 
@@ -444,19 +430,6 @@ function DisplayResult(props: any) {
         <div>
           <Grid container spacing={2}>
             <Grid item sm={4} md={4} className="p-3">
-              <Typography
-                className="my-1"
-                gutterBottom
-                variant="h6"
-                component="div"
-                color="red"
-                onClick={() => handleSearchOnFairPriceClick()}
-              >
-                <span className="mouse-over text-underline">
-                  <b>Search {props.searchKeyword} on fairprice</b>
-                </span>
-              </Typography>
-
               <FormGroup className="my-3">
                 <FormControlLabel
                   control={
@@ -505,19 +478,6 @@ function DisplayResult(props: any) {
               {renderFairpriceProducts(fairpriceProducts)}
             </Grid>
             <Grid item sm={4} md={4} className="p-3">
-              <Typography
-                className="my-1"
-                gutterBottom
-                variant="h6"
-                component="div"
-                color="red"
-                onClick={() => handleSearchOnGiantClick()}
-              >
-                <span className="mouse-over text-underline">
-                  <b>Search {props.searchKeyword} on giant</b>
-                </span>
-              </Typography>
-
               <FormGroup className="my-3">
                 <FormControlLabel
                   control={
@@ -567,19 +527,6 @@ function DisplayResult(props: any) {
               {renderGiantProducts(giantProducts)}
             </Grid>
             <Grid item sm={4} md={4} className="p-3">
-              <Typography
-                className="my-1"
-                gutterBottom
-                variant="h6"
-                component="div"
-                color="red"
-                onClick={() => handleSearchOnColdstorageClick()}
-              >
-                <span className="mouse-over text-underline">
-                  <b>Search {props.searchKeyword} on coldstorage</b>
-                </span>
-              </Typography>
-
               <FormGroup className="my-3">
                 <FormControlLabel
                   control={
