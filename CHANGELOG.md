@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.7...v0.1.8) (2022-03-05)
+
+
+### Features
+
+* 🎸 add bottom drawer ([1811399](https://github.com/yeukfei02/singapore-grocery-web/commit/1811399746546bef0cc4ff2b4cf667a09c43db9d))
+* 🎸 temp add supermarket link ([7328d9c](https://github.com/yeukfei02/singapore-grocery-web/commit/7328d9cd21d1f0b1b7c713e2ed7285917f7a25b2))
+
+
+### Bug Fixes
+
+* 🐛 fix Carousel ([e0eccd0](https://github.com/yeukfei02/singapore-grocery-web/commit/e0eccd008abb6609ec49c1ba2664c016c88813a7))
+* 🐛 fix to use 1 sec for request ([4965fe0](https://github.com/yeukfei02/singapore-grocery-web/commit/4965fe0080c5922c92a55db867b0d590510ebbd5))
+
 ### [0.1.7](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.6...v0.1.7) (2022-03-05)
 
 
