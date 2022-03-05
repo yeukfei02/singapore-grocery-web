@@ -48,9 +48,18 @@ function App() {
     setSearchKeyword(e.target.value);
   };
 
-  const handleSelectedOptionsChange = (event: any, value: string | null) => {
+  const handleSelectedOptionsChange = (
+    event: any,
+    value: string | null,
+    reason: string
+  ) => {
     if (value) {
       setSearchKeyword(value);
+    }
+
+    if (reason === "clear") {
+      setSearchKeyword("");
+      setSuggestions([]);
     }
   };
 
@@ -96,7 +105,9 @@ function App() {
           options={suggestions}
           value={searchKeyword}
           inputValue={searchKeyword}
-          onChange={(event, value) => handleSelectedOptionsChange(event, value)}
+          onChange={(event, value, reason) =>
+            handleSelectedOptionsChange(event, value, reason)
+          }
           onInputChange={(e) => handleSearchKeywordChange(e)}
           renderInput={(params) => (
             <TextField {...params} label="Search Keyword" />
