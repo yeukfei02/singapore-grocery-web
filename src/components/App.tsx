@@ -5,6 +5,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import DisplayResult from "./displayResult/DisplayResult";
+import BottomDrawer from "./bottomDrawer/BottomDrawer";
 import axios from "axios";
 import { getRootUrl } from "../helpers/helpers";
 
@@ -19,6 +20,8 @@ const theme = createTheme({
 function App() {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (searchKeyword) {
@@ -68,6 +71,10 @@ function App() {
     setSuggestions([]);
   };
 
+  const toggleDrawer = (open: boolean) => {
+    setOpen(open);
+  };
+
   const renderDisplayResult = (searchKeyword: string) => {
     let displayResultDiv = null;
 
@@ -83,7 +90,21 @@ function App() {
             Clear All
           </Button>
 
+          <Button
+            variant="outlined"
+            color="info"
+            className="w-100 my-1"
+            onClick={() => toggleDrawer(true)}
+          >
+            Open Bottom Drawer To Search On Supermarket
+          </Button>
+
           <DisplayResult searchKeyword={searchKeyword} />
+          <BottomDrawer
+            open={open}
+            toggleDrawer={toggleDrawer}
+            searchKeyword={searchKeyword}
+          />
         </div>
       );
     }
