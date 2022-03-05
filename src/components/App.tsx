@@ -24,7 +24,7 @@ function App() {
     if (searchKeyword) {
       const delayDebounceFn = setTimeout(() => {
         getSuggestionsRequest(searchKeyword);
-      }, 1500);
+      }, 1000);
 
       return () => clearTimeout(delayDebounceFn);
     }

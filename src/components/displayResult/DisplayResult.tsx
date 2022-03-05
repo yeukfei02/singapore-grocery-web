@@ -43,7 +43,7 @@ function DisplayResult(props: any) {
           fairpricePage,
           fairpriceProductsChecked
         );
-      }, 1500);
+      }, 1000);
 
       return () => clearTimeout(delayDebounceFn);
     }
@@ -53,7 +53,7 @@ function DisplayResult(props: any) {
     if (props.searchKeyword) {
       const delayDebounceFn = setTimeout(() => {
         getGiantProducts(props.searchKeyword, giantPage, giantProductsChecked);
-      }, 1500);
+      }, 1000);
 
       return () => clearTimeout(delayDebounceFn);
     }
@@ -67,7 +67,7 @@ function DisplayResult(props: any) {
           coldstoragePage,
           coldstorageProductsChecked
         );
-      }, 1500);
+      }, 1000);
 
       return () => clearTimeout(delayDebounceFn);
     }
