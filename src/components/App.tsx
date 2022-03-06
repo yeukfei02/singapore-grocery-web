@@ -96,7 +96,7 @@ function App() {
             className="w-100 my-1"
             onClick={() => toggleDrawer(true)}
           >
-            Open Bottom Drawer To Search On Supermarket
+            Filter By Supermarket
           </Button>
 
           <DisplayResult searchKeyword={searchKeyword} />
