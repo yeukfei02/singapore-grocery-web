@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.8...v0.1.9) (2022-03-23)
+
+
+### Features
+
+* 🎸 add google analytics ([16c3402](https://github.com/yeukfei02/singapore-grocery-web/commit/16c3402775a69a4e40bbe1d795b6c92d73e3c709))
+* 🎸 add meta tag for searching ([22ff51e](https://github.com/yeukfei02/singapore-grocery-web/commit/22ff51ed3d68bf6e981a1f819e223f4e2d20e473))
+* 🎸 add updated_at in ui ([2abf607](https://github.com/yeukfei02/singapore-grocery-web/commit/2abf607c73b1fe6905c5d967f9fe38420e07f0be))
+
+
+### Bug Fixes
+
+* 🐛 fix Filter By Supermarket button text ([690e681](https://github.com/yeukfei02/singapore-grocery-web/commit/690e68167f087754cb3326e8a3e50537aab7685c))
+
 ### [0.1.8](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.7...v0.1.8) (2022-03-05)
 
 
