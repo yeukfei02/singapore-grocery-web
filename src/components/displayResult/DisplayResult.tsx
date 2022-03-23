@@ -16,6 +16,7 @@ import Carousel from "react-material-ui-carousel";
 import Fab from "@mui/material/Fab";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import axios from "axios";
+import dayjs from "dayjs";
 import { getRootUrl } from "../../helpers/helpers";
 
 const rootUrl = getRootUrl();
@@ -217,6 +218,10 @@ function DisplayResult(props: any) {
     if (fairpriceProducts) {
       fairpriceProductsDiv = fairpriceProducts.map(
         (product: any, i: number) => {
+          const updatedAt = dayjs(product.updated_at).format(
+            "YYYY-MM-DD HH:mm:ss"
+          );
+
           return (
             <Card key={i} className="my-4 p-4">
               <div
@@ -250,6 +255,9 @@ function DisplayResult(props: any) {
                 >
                   {product.tag}
                 </Alert>
+                <Typography variant="body1" className="mt-3">
+                  Updated at: {updatedAt}
+                </Typography>
               </CardContent>
             </Card>
           );
@@ -265,6 +273,10 @@ function DisplayResult(props: any) {
 
     if (giantProducts) {
       giantProductsDiv = giantProducts.map((product: any, i: number) => {
+        const updatedAt = dayjs(product.updated_at).format(
+          "YYYY-MM-DD HH:mm:ss"
+        );
+
         return (
           <Card key={i} className="my-4 p-4">
             <div
@@ -294,6 +306,9 @@ function DisplayResult(props: any) {
               >
                 {product.tag}
               </Alert>
+              <Typography variant="body1" className="mt-3">
+                Updated at: {updatedAt}
+              </Typography>
             </CardContent>
           </Card>
         );
@@ -309,6 +324,10 @@ function DisplayResult(props: any) {
     if (coldstorageProducts) {
       coldstorageProductsDiv = coldstorageProducts.map(
         (product: any, i: number) => {
+          const updatedAt = dayjs(product.updated_at).format(
+            "YYYY-MM-DD HH:mm:ss"
+          );
+
           return (
             <Card key={i} className="my-4 p-4">
               <div
@@ -342,6 +361,9 @@ function DisplayResult(props: any) {
                 >
                   {product.tag}
                 </Alert>
+                <Typography variant="body1" className="mt-3">
+                  Updated at: {updatedAt}
+                </Typography>
               </CardContent>
             </Card>
           );
