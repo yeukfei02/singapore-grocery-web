@@ -5,8 +5,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -25,6 +25,11 @@ function DisplayResult(props: any) {
   const [fairpriceProducts, setFairpriceProducts] = useState([]);
   const [giantProducts, setGiantProducts] = useState([]);
   const [coldstorageProducts, setColdstorageProducts] = useState([]);
+
+  const [fairpriceProductsMaxPage, setFairpriceProductsMaxPage] = useState(0);
+  const [giantProductsMaxPage, setGiantProductsMaxPage] = useState(0);
+  const [coldstorageProductsMaxPage, setColdstorageProductsMaxPage] =
+    useState(0);
 
   let [fairpricePage, setFairpricePage] = useState(0);
   let [giantPage, setGiantPage] = useState(0);
@@ -97,6 +102,7 @@ function DisplayResult(props: any) {
     if (response) {
       const responseData = response.data;
       setFairpriceProducts(responseData.products);
+      setFairpriceProductsMaxPage(responseData.max_page);
     }
   };
 
@@ -123,6 +129,7 @@ function DisplayResult(props: any) {
     if (response) {
       const responseData = response.data;
       setGiantProducts(responseData.products);
+      setGiantProductsMaxPage(responseData.max_page);
     }
   };
 
@@ -149,6 +156,7 @@ function DisplayResult(props: any) {
     if (response) {
       const responseData = response.data;
       setColdstorageProducts(responseData.products);
+      setColdstorageProductsMaxPage(responseData.max_page);
     }
   };
 
@@ -386,7 +394,7 @@ function DisplayResult(props: any) {
     setColdstorageProductsChecked(e.target.checked);
   };
 
-  const handleRemoveButtonClick = (type: string) => {
+  const handlePreviousPageButtonClick = (type: string) => {
     if (type) {
       switch (type) {
         case "fairprice":
@@ -413,7 +421,7 @@ function DisplayResult(props: any) {
     }
   };
 
-  const handleAddButtonClick = (type: string) => {
+  const handleNextPageButtonClick = (type: string) => {
     if (type) {
       switch (type) {
         case "fairprice":
@@ -471,22 +479,22 @@ function DisplayResult(props: any) {
                   variant="h6"
                   component="div"
                 >
-                  Page: {fairpricePage}
+                  Page: {fairpricePage} / {fairpriceProductsMaxPage}
                 </Typography>
                 <Stack className="ml-2" direction="row">
                   <IconButton
                     aria-label="remove"
                     color="primary"
-                    onClick={() => handleRemoveButtonClick("fairprice")}
+                    onClick={() => handlePreviousPageButtonClick("fairprice")}
                   >
-                    <RemoveIcon />
+                    <ArrowBackIcon />
                   </IconButton>
                   <IconButton
                     aria-label="add"
                     color="primary"
-                    onClick={() => handleAddButtonClick("fairprice")}
+                    onClick={() => handleNextPageButtonClick("fairprice")}
                   >
-                    <AddIcon />
+                    <ArrowForwardIcon />
                   </IconButton>
                 </Stack>
               </div>
@@ -520,22 +528,22 @@ function DisplayResult(props: any) {
                   variant="h6"
                   component="div"
                 >
-                  Page: {giantPage}
+                  Page: {giantPage} / {giantProductsMaxPage}
                 </Typography>
                 <Stack className="ml-2" direction="row">
                   <IconButton
                     aria-label="remove"
                     color="success"
-                    onClick={() => handleRemoveButtonClick("giant")}
+                    onClick={() => handlePreviousPageButtonClick("giant")}
                   >
-                    <RemoveIcon />
+                    <ArrowBackIcon />
                   </IconButton>
                   <IconButton
                     aria-label="add"
                     color="success"
-                    onClick={() => handleAddButtonClick("giant")}
+                    onClick={() => handleNextPageButtonClick("giant")}
                   >
-                    <AddIcon />
+                    <ArrowForwardIcon />
                   </IconButton>
                 </Stack>
               </div>
@@ -569,22 +577,22 @@ function DisplayResult(props: any) {
                   variant="h6"
                   component="div"
                 >
-                  Page: {coldstoragePage}
+                  Page: {coldstoragePage} / {coldstorageProductsMaxPage}
                 </Typography>
                 <Stack className="ml-2" direction="row">
                   <IconButton
                     aria-label="remove"
                     color="error"
-                    onClick={() => handleRemoveButtonClick("coldstorage")}
+                    onClick={() => handlePreviousPageButtonClick("coldstorage")}
                   >
-                    <RemoveIcon />
+                    <ArrowBackIcon />
                   </IconButton>
                   <IconButton
                     aria-label="add"
                     color="error"
-                    onClick={() => handleAddButtonClick("coldstorage")}
+                    onClick={() => handleNextPageButtonClick("coldstorage")}
                   >
-                    <AddIcon />
+                    <ArrowForwardIcon />
                   </IconButton>
                 </Stack>
               </div>
