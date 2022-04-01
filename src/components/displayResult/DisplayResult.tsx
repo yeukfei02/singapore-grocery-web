@@ -102,7 +102,7 @@ function DisplayResult(props: any) {
     if (response) {
       const responseData = response.data;
       setFairpriceProducts(responseData.products);
-      setFairpriceProductsMaxPage(responseData.max_page);
+      setFairpriceProductsMaxPage(responseData.max_page - 1);
     }
   };
 
@@ -129,7 +129,7 @@ function DisplayResult(props: any) {
     if (response) {
       const responseData = response.data;
       setGiantProducts(responseData.products);
-      setGiantProductsMaxPage(responseData.max_page);
+      setGiantProductsMaxPage(responseData.max_page - 1);
     }
   };
 
@@ -156,7 +156,7 @@ function DisplayResult(props: any) {
     if (response) {
       const responseData = response.data;
       setColdstorageProducts(responseData.products);
-      setColdstorageProductsMaxPage(responseData.max_page);
+      setColdstorageProductsMaxPage(responseData.max_page - 1);
     }
   };
 
@@ -425,16 +425,22 @@ function DisplayResult(props: any) {
     if (type) {
       switch (type) {
         case "fairprice":
-          fairpricePage += 1;
-          setFairpricePage(fairpricePage);
+          if (fairpricePage <= fairpriceProductsMaxPage) {
+            fairpricePage += 1;
+            setFairpricePage(fairpricePage);
+          }
           break;
         case "giant":
-          giantPage += 1;
-          setGiantPage(giantPage);
+          if (giantPage <= giantProductsMaxPage) {
+            giantPage += 1;
+            setGiantPage(giantPage);
+          }
           break;
         case "coldstorage":
-          coldstoragePage += 1;
-          setColdstoragePage(coldstoragePage);
+          if (coldstoragePage <= coldstorageProductsMaxPage) {
+            coldstoragePage += 1;
+            setColdstoragePage(coldstoragePage);
+          }
           break;
         default:
           break;
@@ -485,6 +491,7 @@ function DisplayResult(props: any) {
                   <IconButton
                     aria-label="remove"
                     color="primary"
+                    disabled={fairpricePage === 0 ? true : false}
                     onClick={() => handlePreviousPageButtonClick("fairprice")}
                   >
                     <ArrowBackIcon />
@@ -492,6 +499,9 @@ function DisplayResult(props: any) {
                   <IconButton
                     aria-label="add"
                     color="primary"
+                    disabled={
+                      fairpricePage === fairpriceProductsMaxPage ? true : false
+                    }
                     onClick={() => handleNextPageButtonClick("fairprice")}
                   >
                     <ArrowForwardIcon />
@@ -534,6 +544,7 @@ function DisplayResult(props: any) {
                   <IconButton
                     aria-label="remove"
                     color="success"
+                    disabled={giantPage === 0 ? true : false}
                     onClick={() => handlePreviousPageButtonClick("giant")}
                   >
                     <ArrowBackIcon />
@@ -541,6 +552,7 @@ function DisplayResult(props: any) {
                   <IconButton
                     aria-label="add"
                     color="success"
+                    disabled={giantPage === giantProductsMaxPage ? true : false}
                     onClick={() => handleNextPageButtonClick("giant")}
                   >
                     <ArrowForwardIcon />
@@ -583,6 +595,7 @@ function DisplayResult(props: any) {
                   <IconButton
                     aria-label="remove"
                     color="error"
+                    disabled={coldstoragePage === 0 ? true : false}
                     onClick={() => handlePreviousPageButtonClick("coldstorage")}
                   >
                     <ArrowBackIcon />
@@ -590,6 +603,11 @@ function DisplayResult(props: any) {
                   <IconButton
                     aria-label="add"
                     color="error"
+                    disabled={
+                      coldstoragePage === coldstorageProductsMaxPage
+                        ? true
+                        : false
+                    }
                     onClick={() => handleNextPageButtonClick("coldstorage")}
                   >
                     <ArrowForwardIcon />
