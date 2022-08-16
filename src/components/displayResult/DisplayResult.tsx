@@ -31,9 +31,9 @@ function DisplayResult(props: any) {
   const [coldstorageProductsMaxPage, setColdstorageProductsMaxPage] =
     useState(0);
 
-  let [fairpricePage, setFairpricePage] = useState(0);
-  let [giantPage, setGiantPage] = useState(0);
-  let [coldstoragePage, setColdstoragePage] = useState(0);
+  let [fairpricePage, setFairpricePage] = useState(1);
+  let [giantPage, setGiantPage] = useState(1);
+  let [coldstoragePage, setColdstoragePage] = useState(1);
 
   const [fairpriceProductsChecked, setFairpriceProductsChecked] =
     useState(false);
@@ -58,7 +58,11 @@ function DisplayResult(props: any) {
   useEffect(() => {
     if (props.searchKeyword) {
       const delayDebounceFn = setTimeout(() => {
-        getGiantProducts(props.searchKeyword, giantPage, giantProductsChecked);
+        getGiantProducts(
+          props.searchKeyword,
+          giantPage - 1,
+          giantProductsChecked
+        );
       }, 1000);
 
       return () => clearTimeout(delayDebounceFn);
@@ -70,7 +74,7 @@ function DisplayResult(props: any) {
       const delayDebounceFn = setTimeout(() => {
         getColdstorageProducts(
           props.searchKeyword,
-          coldstoragePage,
+          coldstoragePage - 1,
           coldstorageProductsChecked
         );
       }, 1000);
@@ -472,8 +476,8 @@ function DisplayResult(props: any) {
                   }
                   label={
                     !fairpriceProductsChecked
-                      ? "Order By Price Asc"
-                      : "Order By Price Desc"
+                      ? "Order By Price (Ascending)"
+                      : "Order By Price (Descending)"
                   }
                 />
               </FormGroup>
@@ -491,7 +495,7 @@ function DisplayResult(props: any) {
                   <IconButton
                     aria-label="remove"
                     color="primary"
-                    disabled={fairpricePage === 0 ? true : false}
+                    disabled={fairpricePage === 1 ? true : false}
                     onClick={() => handlePreviousPageButtonClick("fairprice")}
                   >
                     <ArrowBackIcon />
@@ -525,8 +529,8 @@ function DisplayResult(props: any) {
                   }
                   label={
                     !giantProductsChecked
-                      ? "Order By Price Asc"
-                      : "Order By Price Desc"
+                      ? "Order By Price (Ascending)"
+                      : "Order By Price (Descending)"
                   }
                 />
               </FormGroup>
@@ -544,7 +548,7 @@ function DisplayResult(props: any) {
                   <IconButton
                     aria-label="remove"
                     color="success"
-                    disabled={giantPage === 0 ? true : false}
+                    disabled={giantPage === 1 ? true : false}
                     onClick={() => handlePreviousPageButtonClick("giant")}
                   >
                     <ArrowBackIcon />
@@ -576,8 +580,8 @@ function DisplayResult(props: any) {
                   }
                   label={
                     !coldstorageProductsChecked
-                      ? "Order By Price Asc"
-                      : "Order By Price Desc"
+                      ? "Order By Price (Ascending)"
+                      : "Order By Price (Descending)"
                   }
                 />
               </FormGroup>
@@ -595,7 +599,7 @@ function DisplayResult(props: any) {
                   <IconButton
                     aria-label="remove"
                     color="error"
-                    disabled={coldstoragePage === 0 ? true : false}
+                    disabled={coldstoragePage === 1 ? true : false}
                     onClick={() => handlePreviousPageButtonClick("coldstorage")}
                   >
                     <ArrowBackIcon />
