@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.11...v0.1.12) (2022-08-16)
+
+
+### Bug Fixes
+
+* 🐛 fix page and text ([d8b69f6](https://github.com/yeukfei02/singapore-grocery-web/commit/d8b69f6dfbe8d49f123b0de0a874c17e577c0231))
+
 ### [0.1.11](https://github.com/yeukfei02/singapore-grocery-web/compare/v0.1.10...v0.1.11) (2022-04-01)
 
 
