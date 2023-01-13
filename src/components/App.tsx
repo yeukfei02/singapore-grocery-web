@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import DisplayResult from "./displayResult/DisplayResult";
 import BottomDrawer from "./bottomDrawer/BottomDrawer";
 import axios from "axios";
+import { useDebounce } from "react-use";
 import { getRootUrl } from "../helpers/helpers";
 
 const rootUrl = getRootUrl();
@@ -22,6 +23,16 @@ function App() {
   const [suggestions, setSuggestions] = useState([]);
 
   const [open, setOpen] = useState(false);
+
+  const [,] = useDebounce(
+    () => {
+      if (searchKeyword) {
+        getSuggestionsRequest(searchKeyword);
+      }
+    },
+    1000,
+    [searchKeyword]
+  );
 
   useEffect(() => {
     if (searchKeyword) {

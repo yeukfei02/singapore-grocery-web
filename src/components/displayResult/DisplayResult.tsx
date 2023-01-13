@@ -16,6 +16,7 @@ import Carousel from "react-material-ui-carousel";
 import Fab from "@mui/material/Fab";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import axios from "axios";
+import { useDebounce } from "react-use";
 import dayjs from "dayjs";
 import { getRootUrl } from "../../helpers/helpers";
 
@@ -41,47 +42,47 @@ function DisplayResult(props: any) {
   const [coldstorageProductsChecked, setColdstorageProductsChecked] =
     useState(false);
 
-  useEffect(() => {
-    if (props.searchKeyword) {
-      const delayDebounceFn = setTimeout(() => {
+  const [,] = useDebounce(
+    () => {
+      if (props.searchKeyword) {
         getFairpriceProducts(
           props.searchKeyword,
           fairpricePage,
           fairpriceProductsChecked
         );
-      }, 1000);
+      }
+    },
+    1000,
+    [props.searchKeyword, fairpricePage, fairpriceProductsChecked]
+  );
 
-      return () => clearTimeout(delayDebounceFn);
-    }
-  }, [props.searchKeyword, fairpricePage, fairpriceProductsChecked]);
-
-  useEffect(() => {
-    if (props.searchKeyword) {
-      const delayDebounceFn = setTimeout(() => {
+  const [,] = useDebounce(
+    () => {
+      if (props.searchKeyword) {
         getGiantProducts(
           props.searchKeyword,
           giantPage - 1,
           giantProductsChecked
         );
-      }, 1000);
+      }
+    },
+    1000,
+    [props.searchKeyword, giantPage, giantProductsChecked]
+  );
 
-      return () => clearTimeout(delayDebounceFn);
-    }
-  }, [props.searchKeyword, giantPage, giantProductsChecked]);
-
-  useEffect(() => {
-    if (props.searchKeyword) {
-      const delayDebounceFn = setTimeout(() => {
+  const [,] = useDebounce(
+    () => {
+      if (props.searchKeyword) {
         getColdstorageProducts(
           props.searchKeyword,
           coldstoragePage - 1,
           coldstorageProductsChecked
         );
-      }, 1000);
-
-      return () => clearTimeout(delayDebounceFn);
-    }
-  }, [props.searchKeyword, coldstoragePage, coldstorageProductsChecked]);
+      }
+    },
+    1000,
+    [props.searchKeyword, coldstoragePage, coldstorageProductsChecked]
+  );
 
   const getFairpriceProducts = async (
     searchKeyword: string,
