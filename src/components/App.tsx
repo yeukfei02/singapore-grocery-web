@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import DisplayResult from "./displayResult/DisplayResult";
 import BottomDrawer from "./bottomDrawer/BottomDrawer";
 import axios from "axios";
-import { useDebounce } from "react-use";
+import useDebounce from "react-use/lib/useDebounce";
 import { getRootUrl } from "../helpers/helpers";
 
 const rootUrl = getRootUrl();
