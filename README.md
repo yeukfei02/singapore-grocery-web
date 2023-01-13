@@ -22,6 +22,12 @@ $ yarn run build
 
 // preview
 $ yarn run preview
+
+// lint code
+$ yarn run lint
+
+// format code
+$ yarn run format
 ```
 
 open localhost:5000
