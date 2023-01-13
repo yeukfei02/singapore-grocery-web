@@ -16,7 +16,7 @@ import Carousel from "react-material-ui-carousel";
 import Fab from "@mui/material/Fab";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import axios from "axios";
-import { useDebounce } from "react-use";
+import useDebounce from "react-use/lib/useDebounce";
 import dayjs from "dayjs";
 import { getRootUrl } from "../../helpers/helpers";
 
